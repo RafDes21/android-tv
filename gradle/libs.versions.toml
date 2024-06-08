@@ -19,6 +19,8 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-leanback = { group = "androidx.leanback", name = "leanback", version.ref = "leanback" }
 #androidx-leanback-extension = { group = "androidx.leanback", name = "extension-leanback", version.ref = "leanback" }
 androidx-media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3" }
+androidx-media3-exoplayer-hls = { group = "androidx.media3", name = "media3-exoplayer-hls", version.ref = "media3" }
+
 androidx-media3-ui = { group = "androidx.media3", name = "media3-ui", version.ref = "media3" }
 androidx-media3-leanback = { group = "androidx.media3", name = "media3-ui-leanback", version.ref = "media3" }
 
