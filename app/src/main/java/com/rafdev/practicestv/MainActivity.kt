@@ -35,7 +35,7 @@ class MainActivity : FragmentActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    @SuppressLint("UseCompatLoadingForDrawables")
+    @SuppressLint("UseCompatLoadingForDrawables", "SetTextI18n")
     private fun initUI() {
         binding.playButton.apply {
             requestFocus()
@@ -48,6 +48,7 @@ class MainActivity : FragmentActivity() {
         val cardView: ImageCardView = binding.cardView
         cardView.titleText = "Título de la tarjeta"
         cardView.contentText = "Descripción de la tarjeta"
+//        cardView.findViewById<TextView>(R.id.title_text).text = "New Title"
         cardView.infoVisibility = BaseCardView.CARD_REGION_VISIBLE_ALWAYS
         cardView.setBackgroundColor(getColor(R.color.transparent))
         cardView.setInfoAreaBackgroundColor(getColor(R.color.transparent))

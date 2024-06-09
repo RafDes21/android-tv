@@ -32,15 +32,24 @@
         android:focusableInTouchMode="true"
         android:focusable="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/play_button"/>
-<!--        <TextView-->
-<!--            android:id="@+id/title_text"-->
+        app:layout_constraintTop_toBottomOf="@+id/play_button">
+<!--        <LinearLayout-->
 <!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textSize="12sp"-->
-<!--            android:background="@color/primary"-->
-<!--            android:textColor="@android:color/white"-->
-<!--            android:maxLines="1" />-->
-<!--    </androidx.leanback.widget.ImageCardView>-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            <View-->
+<!--                android:layout_width="5dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:background="@color/secondary"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/title_text"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:textSize="12sp"-->
+<!--                android:background="@color/secondary"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                android:maxLines="1" />-->
+<!--        </LinearLayout>-->
+    </androidx.leanback.widget.ImageCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
