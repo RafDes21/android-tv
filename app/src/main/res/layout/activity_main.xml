@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -14,11 +15,32 @@
         android:background="@drawable/button"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:nextFocusDown="@+id/card_view"
         android:paddingHorizontal="30dp"
         android:text="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.leanback.widget.ImageCardView
+        android:id="@+id/card_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/play_button"/>
+<!--        <TextView-->
+<!--            android:id="@+id/title_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="12sp"-->
+<!--            android:background="@color/primary"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:maxLines="1" />-->
+<!--    </androidx.leanback.widget.ImageCardView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

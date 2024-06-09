@@ -29,37 +29,43 @@ class VideoPlayerGlue(
     private val closedCaptionAction = PlaybackControlsRow.ClosedCaptioningAction(context)
     private val shuffleAction = PlaybackControlsRow.ShuffleAction(context)
     private val pictureAction = PlaybackControlsRow.PictureInPictureAction(context)
+//    private val backAction = PlaybackControlsRow.Action(context, android.R.drawable.ic_menu_revert, "Back")
+
 
     interface OnActionClickedListener {
         fun onPrevious()
         fun onNext()
+        fun onBack()
+
     }
 
     override fun onCreatePrimaryActions(adapter: ArrayObjectAdapter) {
         super.onCreatePrimaryActions(adapter)
-        adapter.add(rewindAction)
-        adapter.add(skipPreviousAction)
-        adapter.add(skipNextAction)
-        adapter.add(fastForwardAction)
+//        adapter.add(rewindAction)
+//        adapter.add(skipPreviousAction)
+//        adapter.add(skipNextAction)
+//        adapter.add(fastForwardAction)
     }
 
     override fun onCreateSecondaryActions(adapter: ArrayObjectAdapter) {
         super.onCreateSecondaryActions(adapter)
         // Uncomment the following lines if you want to add secondary actions
-        // adapter.add(thumbsDownAction)
-        // adapter.add(thumbsUpAction)
-        // adapter.add(shuffleAction)
-        // adapter.add(closedCaptionAction)
-        // adapter.add(pictureAction)
+//         adapter.add(thumbsDownAction)
+//         adapter.add(thumbsUpAction)
+//         adapter.add(shuffleAction)
+//         adapter.add(closedCaptionAction)
+//         adapter.add(pictureAction)
+//         adapter.add(backAction)
+
     }
 
     override fun onActionClicked(action: Action?) {
-        if (shouldDispatchAction(action)) {
-            if (action === fastForwardAction) {
-                playerAdapter.seekTo(playerAdapter.currentPosition + TimeUnit.SECONDS.toMillis(60))
-            }
-            return
-        }
+//        if (shouldDispatchAction(action)) {
+//            if (action === fastForwardAction) {
+//                playerAdapter.seekTo(playerAdapter.currentPosition + TimeUnit.SECONDS.toMillis(60))
+//            }
+//            return
+//        }
         // Super class handles play/pause and delegates to abstract methods next()/previous().
         super.onActionClicked(action)
     }

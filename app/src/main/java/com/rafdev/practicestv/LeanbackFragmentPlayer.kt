@@ -41,19 +41,23 @@ class LeanbackFragmentPlayer : PlaybackSupportFragment(), Player.Listener,
 
     @OptIn(UnstableApi::class)
     private fun initPlayer() {
-//        val playerView = requireActivity().findViewById<PlayerView>(R.id.player)
+        val playerView = requireActivity().findViewById<PlayerView>(R.id.player)
 
         player = ExoPlayer.Builder(requireContext()).build()
-//        playerView.player = player
+        playerView.player = player
 
         val playerAdapter = LeanbackPlayerAdapter(requireContext(), player!!, 16)
         playerGlue = VideoPlayerGlue(requireContext(), playerAdapter, this)
         playerGlue?.setHost(PlaybackSupportFragmentGlueHost(this))
+        playerGlue?.title = "Avances"
+        playerGlue?.subtitle = "EN VIVO"
         playerGlue?.playWhenPrepared()
 
         adapter = ArrayObjectAdapter()
 
-        val url = "https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8"
+
+//        val url = "https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8"
+        val url = "https://redirector.dps.live/hls/t13/playlist.m3u8"
         preparePlayer(requireContext(), player!!, url)
     }
 
@@ -101,5 +105,9 @@ class LeanbackFragmentPlayer : PlaybackSupportFragment(), Player.Listener,
 
     override fun onNext() {
         // Implement your next action here
+    }
+
+    override fun onBack() {
+        TODO("Not yet implemented")
     }
 }

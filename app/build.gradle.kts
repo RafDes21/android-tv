@@ -51,5 +51,8 @@ dependencies {
     implementation(libs.androidx.media3.ui)
     implementation(libs.androidx.media3.exoplayer.dash)
     implementation(libs.androidx.media3.leanback)
+    implementation(libs.glide)
+    implementation (libs.glide.transformations)
+//    import jp.wasabeef.glide.transformations.BorderTransformation
 
 }
