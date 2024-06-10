@@ -1,11 +1,13 @@
 package com.rafdev.practicestv
 
 import android.content.Context
+import androidx.leanback.media.PlaybackControlGlue
 import androidx.leanback.media.PlaybackTransportControlGlue
 import androidx.leanback.media.PlayerAdapter
 import androidx.leanback.widget.Action
 import androidx.leanback.widget.ArrayObjectAdapter
 import androidx.leanback.widget.PlaybackControlsRow
+import androidx.leanback.widget.PlaybackRowPresenter
 
 import java.util.concurrent.TimeUnit
 
@@ -39,13 +41,19 @@ class VideoPlayerGlue(
 
     }
 
-    override fun onCreatePrimaryActions(adapter: ArrayObjectAdapter) {
-        super.onCreatePrimaryActions(adapter)
-//        adapter.add(rewindAction)
-//        adapter.add(skipPreviousAction)
-//        adapter.add(skipNextAction)
-//        adapter.add(fastForwardAction)
-    }
+//    override fun enableProgressUpdating(enable: Boolean) {
+//        // Override to stop updating progress
+//        super.enableProgressUpdating(false)
+//    }
+
+
+//    fun onCreatePrimaryActions(adapter: ArrayObjectAdapter) {
+//        super.onCreatePrimaryActions(adapter)
+////        adapter.add(rewindAction)
+////        adapter.add(skipPreviousAction)
+////        adapter.add(skipNextAction)
+////        adapter.add(fastForwardAction)
+//    }
 
     override fun onCreateSecondaryActions(adapter: ArrayObjectAdapter) {
         super.onCreateSecondaryActions(adapter)

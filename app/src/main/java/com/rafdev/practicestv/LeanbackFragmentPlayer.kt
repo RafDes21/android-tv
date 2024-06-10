@@ -1,6 +1,7 @@
 package com.rafdev.practicestv
 
 import android.content.Context
+import android.os.Bundle
 import androidx.annotation.OptIn
 import androidx.media3.common.MediaItem
 import androidx.media3.common.util.UnstableApi
@@ -25,6 +26,13 @@ class LeanbackFragmentPlayer : PlaybackSupportFragment(), Player.Listener,
     private var player: ExoPlayer? = null
     private var playerGlue: VideoPlayerGlue? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        backgroundType = 2
+//        progressBarManager.disableProgressBar()
+
+    }
+
     @OptIn(UnstableApi::class)
     private fun preparePlayer(context: Context, player: ExoPlayer, videoUri: String) {
 //        val dataSourceFactory: DefaultDataSource.Factory = DefaultDataSource.Factory(context)
@@ -37,6 +45,7 @@ class LeanbackFragmentPlayer : PlaybackSupportFragment(), Player.Listener,
         val mediaItem = MediaItem.fromUri(videoUri)
         player.setMediaItem(mediaItem)
         player.prepare()
+        player.play()
     }
 
     @OptIn(UnstableApi::class)
@@ -47,17 +56,17 @@ class LeanbackFragmentPlayer : PlaybackSupportFragment(), Player.Listener,
         playerView.player = player
 
         val playerAdapter = LeanbackPlayerAdapter(requireContext(), player!!, 16)
-        playerGlue = VideoPlayerGlue(requireContext(), playerAdapter, this)
-        playerGlue?.setHost(PlaybackSupportFragmentGlueHost(this))
-        playerGlue?.title = "Avances"
-        playerGlue?.subtitle = "EN VIVO"
-        playerGlue?.playWhenPrepared()
+//        playerGlue = VideoPlayerGlue(requireContext(), playerAdapter, this)
+//        playerGlue?.setHost(PlaybackSupportFragmentGlueHost(this))
+//        playerGlue?.title = "Avances"
+//        playerGlue?.subtitle = "EN VIVO"
+//        playerGlue?.playWhenPrepared()
+//
+//        adapter = ArrayObjectAdapter()
 
-        adapter = ArrayObjectAdapter()
 
-
-//        val url = "https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8"
-        val url = "https://redirector.dps.live/hls/t13/playlist.m3u8"
+        val url = "https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8"
+//        val url = "https://redirector.dps.live/hls/t13/playlist.m3u8"
         preparePlayer(requireContext(), player!!, url)
     }
 
