@@ -34,7 +34,8 @@ class LauncherActivity : AppCompatActivity() {
         playerView = binding.playerViewSplash
         player = ExoPlayer.Builder(this).build().also { exoPlayer ->
             playerView?.player = exoPlayer
-            val uri = Uri.parse("asset:///splash.mp4")
+            val rawResId = resources.getIdentifier("splash", "raw", packageName)
+            val uri = Uri.parse("android.resource://$packageName/$rawResId")
             val mediaItem = MediaItem.fromUri(uri)
             exoPlayer.setMediaItem(mediaItem)
             exoPlayer.prepare()

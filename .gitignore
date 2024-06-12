@@ -15,3 +15,5 @@
 local.properties
 /app/src/main/assets
 /app/src/main/res/drawable/ic_logo_avivo.png
+/app/src/main/res/raw
+
