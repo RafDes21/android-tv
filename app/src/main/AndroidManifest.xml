@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracticesTV">
         <activity
-            android:name=".ui.LauncherActivity"
+            android:name=".ui.splash.LauncherActivity"
             android:exported="true"
             android:theme="@style/Theme.MainActivity">
             <intent-filter>

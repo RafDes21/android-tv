@@ -58,6 +58,9 @@ dependencies {
     // Kotlin
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 }
 kapt {
     correctErrorTypes = true
