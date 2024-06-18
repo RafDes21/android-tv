@@ -122,6 +122,7 @@ class ChannelManager(private val context: Context) {
                 .setTitle(program.title)
                 .setPosterArtUri(Uri.parse(program.url))
                 .setInternalProviderId(channelId.toString())
+                .setIntentUri(Uri.parse("content://practicestv.rafdev"))
 
             context.contentResolver.insert(
                 TvContractCompat.PreviewPrograms.CONTENT_URI,
@@ -139,6 +140,8 @@ class ChannelManager(private val context: Context) {
             .setTitle(newProgram.title)
             .setPosterArtUri(Uri.parse(newProgram.url))
             .setInternalProviderId(channelId.toString())
+            .setIntentUri(Uri.parse("content://practicestv.rafdev"))
+
 
         context.contentResolver.update(
             updateUri,
@@ -156,6 +159,8 @@ class ChannelManager(private val context: Context) {
             .setTitle(program.title)
             .setPosterArtUri(Uri.parse(program.url))
             .setInternalProviderId(channelId.toString())
+            .setIntentUri(Uri.parse("content://practicestv.rafdev"))
+
 
         context.contentResolver.insert(
             TvContractCompat.PreviewPrograms.CONTENT_URI,
