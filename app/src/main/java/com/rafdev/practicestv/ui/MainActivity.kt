@@ -24,7 +24,7 @@ class MainActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        contentResolver.delete(TvContractCompat.Channels.CONTENT_URI, null, null)
+        contentResolver.delete(TvContractCompat.Channels.CONTENT_URI, null, null)
 
         val recommendedChannelId = channelManager.createRecommendedChannelIfNeeded()
 
