@@ -7,7 +7,7 @@ class ImplementResponse {
     val items = listOf(
         ResponseModel(
             "Recommended1",
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/10.png"
+            "https://cdn.pixabay.com/photo/2016/10/26/19/00/domain-names-1772242_1280.jpg"
         ),
         ResponseModel(
             "Recommended2",
@@ -15,7 +15,7 @@ class ImplementResponse {
         ),
         ResponseModel(
             "Recommended3",
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/8.png"
+            "https://cdn.pixabay.com/photo/2022/05/17/02/11/fractal-7201481_1280.jpg"
         )
 
     )

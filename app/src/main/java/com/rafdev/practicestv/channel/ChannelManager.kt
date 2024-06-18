@@ -31,7 +31,9 @@ class ChannelManager(private val context: Context) {
     fun createRecommendedChannelIfNeeded(): Long {
         val recommendedChannelId = findChannelIdByName(CHANNEL_RECOMMENDED)
         if (recommendedChannelId == -1L) {
-            return createChannel(CHANNEL_RECOMMENDED)
+            val newChannelId = createChannel(CHANNEL_RECOMMENDED)
+            (context as MainActivity).requestChannelBrowsable(newChannelId)
+            return newChannelId
         }
         return recommendedChannelId
     }
@@ -97,6 +99,8 @@ class ChannelManager(private val context: Context) {
 
         newPrograms.forEach { newProgram ->
             val existingProgram = existingProgramsMap[newProgram.title]
+            Log.i(CHANNEL, "existen !!!-> $existingProgram")
+
             if (existingProgram != null) {
                 // Programa existente, actualizar si es necesario
                 if (existingProgram.title == newProgram.title) {
