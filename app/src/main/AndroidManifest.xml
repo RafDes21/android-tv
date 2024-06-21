@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="com.android.providers.tv.permission.READ_EPG_DATA" />
+
     <uses-feature
         android:name="android.software.leanback"
         android:required="false" />
@@ -9,22 +11,53 @@
         android:required="false" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:banner="@mipmap/banner"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.PracticesTV">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".ui.splash.LauncherActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PracticesTV">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="content" />
+
+                <data android:host="practicestv.rafdev" />
+
+            </intent-filter>
+
+        </activity>
+
+        <!--        <receiver-->
+        <!--            android:name=".RunOnInstallReceiver"-->
+        <!--            android:exported="true">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.media.tv.action.INITIALIZE_PROGRAMS" />-->
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--            </intent-filter>-->
+        <!--        </receiver>-->
+
     </application>
 
 </manifest>
