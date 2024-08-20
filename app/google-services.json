@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "555412981721",
+    "project_id": "practicestv-baf12",
+    "storage_bucket": "practicestv-baf12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555412981721:android:d18f0d48b40b1447773bc8",
+        "android_client_info": {
+          "package_name": "com.rafdev.practicestv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvEs8B3kfbfPHLe8_4QVBEen-hkvApheo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
