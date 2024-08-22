@@ -21,7 +21,7 @@
         android:theme="@style/Theme.PracticesTV">
         <activity
             android:name=".ui.player.PlayerActivity"
-            android:exported="false" />
+            android:theme="@style/Theme.Player"/>
         <activity
             android:name=".ui.splash.LauncherActivity"
             android:exported="true"

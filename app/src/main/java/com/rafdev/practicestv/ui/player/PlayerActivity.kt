@@ -1,11 +1,9 @@
 package com.rafdev.practicestv.ui.player
 
 import android.os.Bundle
-import android.view.View
+import androidx.annotation.OptIn
 import androidx.fragment.app.FragmentActivity
-import androidx.media3.common.MediaItem
-import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.ui.PlayerView
+import androidx.media3.common.util.UnstableApi
 import com.rafdev.practicestv.R
 
 class PlayerActivity : FragmentActivity() {
@@ -19,7 +17,6 @@ class PlayerActivity : FragmentActivity() {
                 .replace(R.id.video_fragment, PlaybackVideoFragment())
                 .commit()
         }
-//        initPlayer()
     }
 
 //    private fun initPlayer() {

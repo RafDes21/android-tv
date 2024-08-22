@@ -46,24 +46,29 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.leanback)
-//    implementation(libs.androidx.leanback.extension)
-    implementation(libs.androidx.media3.exoplayer)
-    implementation(libs.androidx.media3.exoplayer.hls)
-    implementation(libs.androidx.media3.ui)
-    implementation(libs.androidx.media3.leanback)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.media3.ui.leanback)
     kapt(libs.hilt.android.compiler)
     val nav_version = "2.7.7"
 
-    implementation("com.google.android.exoplayer:extension-leanback:2.19.1")
+//    implementation("com.google.android.exoplayer:extension-leanback:2.19.1")
     // Kotlin
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+
     implementation("androidx.tvprovider:tvprovider:1.0.0")
+    implementation("androidx.leanback:leanback:1.2.0-alpha04")
+    implementation("androidx.leanback:leanback-preference:1.2.0-alpha04")
+
+
+    //media3
+    implementation("androidx.media3:media3-exoplayer:1.3.1")
+    implementation("androidx.media3:media3-ui:1.3.1")
+    implementation ("androidx.media3:media3-exoplayer-hls:1.3.1")
+    implementation("androidx.media3:media3-ui-leanback:1.3.1")
 
 }
 kapt {
