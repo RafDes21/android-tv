@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    <androidx.media3.ui.PlayerView-->
-<!--        android:id="@+id/player"-->
-<!--        android:layout_width="match_parent"-->
-<!--        app:use_controller="false"-->
-<!--        android:layout_height="match_parent" />-->
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        app:use_controller="false"
+        android:layout_height="match_parent" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/video_fragment"
-        android:background="@color/test"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:name="com.rafdev.practicestv.ui.player.PlaybackVideoFragment"
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

@@ -3,6 +3,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="com.android.providers.tv.permission.READ_EPG_DATA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature
         android:name="android.software.leanback"
@@ -21,7 +22,8 @@
         android:theme="@style/Theme.PracticesTV">
         <activity
             android:name=".ui.player.PlayerActivity"
-            android:theme="@style/Theme.Player"/>
+            android:theme="@style/Theme.Player"
+            android:exported="false"/>
         <activity
             android:name=".ui.splash.LauncherActivity"
             android:exported="true"

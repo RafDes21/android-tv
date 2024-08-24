@@ -60,9 +60,7 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 
     implementation("androidx.tvprovider:tvprovider:1.0.0")
-    implementation("androidx.leanback:leanback:1.2.0-alpha04")
-    implementation("androidx.leanback:leanback-preference:1.2.0-alpha04")
-
+    implementation("androidx.leanback:leanback:1.0.0")
 
     //media3
     implementation("androidx.media3:media3-exoplayer:1.3.1")

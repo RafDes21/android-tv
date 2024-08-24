@@ -7,16 +7,9 @@ import androidx.media3.common.util.UnstableApi
 import com.rafdev.practicestv.R
 
 class PlayerActivity : FragmentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
-
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.video_fragment, PlaybackVideoFragment())
-                .commit()
-        }
     }
 
 //    private fun initPlayer() {
