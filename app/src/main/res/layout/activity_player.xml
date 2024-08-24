@@ -14,7 +14,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/video_fragment"
         android:layout_width="match_parent"
-        android:name="com.rafdev.practicestv.ui.player.PlaybackVideoFragment"
+        android:name="com.rafdev.practicestv.ui.fragment.VideoPlayerFragment"
         android:layout_height="wrap_content" />
 
 </FrameLayout>
