@@ -40,14 +40,22 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.leanback)
     implementation(libs.hilt.android)
-    implementation(libs.androidx.media3.ui.leanback)
+//    implementation(libs.androidx.leanback.extension)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.exoplayer.hls)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.exoplayer.dash)
+    implementation(libs.androidx.media3.leanback)
+    implementation(libs.glide)
+    implementation (libs.glide.transformations)
+//    import jp.wasabeef.glide.transformations.BorderTransformation
     kapt(libs.hilt.android.compiler)
     val nav_version = "2.7.7"
 
@@ -60,13 +68,6 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 
     implementation("androidx.tvprovider:tvprovider:1.0.0")
-    implementation("androidx.leanback:leanback:1.0.0")
-
-    //media3
-    implementation("androidx.media3:media3-exoplayer:1.3.1")
-    implementation("androidx.media3:media3-ui:1.3.1")
-    implementation ("androidx.media3:media3-exoplayer-hls:1.3.1")
-    implementation("androidx.media3:media3-ui-leanback:1.3.1")
 
 }
 kapt {

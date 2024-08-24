@@ -54,8 +54,9 @@ class PlaybackVideoFragment : VideoSupportFragment() {
 
         val playerAdapter = LeanbackPlayerAdapter(requireContext(), player!!, 16)
         playerGlue = PlaybackTransportControlGlue(requireContext(), playerAdapter)
-//        playerGlue?.setHost(VideoSupportFragmentGlueHost(this))//        playerGlue = VideoPlayerGlue(requireContext(), playerAdapter, this)
-        playerGlue?.setHost(PlaybackSupportFragmentGlueHost(this))
+        playerGlue?.host = VideoSupportFragmentGlueHost(this)
+//        playerGlue?.setHost(VideoSupportFragmentGlueHost(this))//
+//        playerGlue = VideoPlayerGlue(requireContext(), playerAdapter, this)
 //        playerGlue?.title = "Avances"
 //        playerGlue?.subtitle = "EN VIVO"
 //        playerGlue?.playWhenPrepared()
@@ -208,3 +209,9 @@ class PlaybackVideoFragment : VideoSupportFragment() {
 //        val uriPath = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
 //        playerGlue.playerAdapter.setDataSource(Uri.parse(uriPath))
 //    }
+
+
+//val playerAdapter = LeanbackPlayerAdapter(requireContext(), player!!, 16)
+//playerGlue = PlaybackTransportControlGlue(requireContext(), playerAdapter)
+////        playerGlue = VideoPlayerGlue(requireContext(), playerAdapter, this)
+//playerGlue?.host = VideoSupportFragmentGlueHost(this)
