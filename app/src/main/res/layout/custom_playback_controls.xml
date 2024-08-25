@@ -53,8 +53,10 @@
             android:nextFocusDown="@id/play_pause_button"
             android:paddingVertical="17dp"
             android:paddingStart="17dp"
+            android:clickable="true"
             android:paddingEnd="17dp"
             android:src="@drawable/ic_back" />
+
 
     </LinearLayout>
 
@@ -67,7 +69,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintStart_toEndOf="@+id/guideline_start">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/play_pause_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -75,10 +77,11 @@
             android:background="@drawable/btn_selector"
             android:contentDescription="@string/app_name"
             android:focusable="true"
+            android:clickable="true"
             android:focusableInTouchMode="true"
             android:nextFocusUp="@id/ic_back"
             android:paddingVertical="17dp"
-            android:paddingStart="19dp"
+            android:paddingStart="17dp"
             android:paddingEnd="15dp"
             android:src="@drawable/ic_play" />
 

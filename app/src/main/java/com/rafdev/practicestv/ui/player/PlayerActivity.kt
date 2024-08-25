@@ -69,7 +69,21 @@ class PlayerActivity : FragmentActivity() {
                 }
             }
         })
+        setupButtonListeners()
         setupDirectionalPadListener()
+    }
+
+    private fun setupButtonListeners() {
+        playPauseButton.setOnClickListener {
+            playPauseButton.isPressed = true
+            if (player.isPlaying){
+                player.pause()
+                playPauseButton.setImageResource(R.drawable.ic_play)
+            }else{
+                player.play()
+                playPauseButton.setImageResource(R.drawable.ic_pause)
+            }
+        }
     }
 
     private fun setupDirectionalPadListener() {
