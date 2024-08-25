@@ -38,18 +38,18 @@ class  PlaybackVideoFragment : VideoSupportFragment(){
 
     @OptIn(UnstableApi::class)
     private fun initPlayer() {
-        val playerView = requireActivity().findViewById<PlayerView>(R.id.player)
-
-        player = ExoPlayer.Builder(requireContext()).build()
-        playerView.player = player
-
-        val playerAdapter = LeanbackPlayerAdapter(requireContext(), player!!, 16)
-        playerGlue = PlaybackTransportControlGlue(requireContext(), playerAdapter)
-        playerGlue?.host = VideoSupportFragmentGlueHost(this)
-
-
-        val url = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
-        preparePlayer(requireContext(), player!!, url)
+//        val playerView = requireActivity().findViewById<PlayerView>(R.id.player)
+//
+//        player = ExoPlayer.Builder(requireContext()).build()
+//        playerView.player = player
+//
+//        val playerAdapter = LeanbackPlayerAdapter(requireContext(), player!!, 16)
+//        playerGlue = PlaybackTransportControlGlue(requireContext(), playerAdapter)
+//        playerGlue?.host = VideoSupportFragmentGlueHost(this)
+//
+//
+//        val url = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+//        preparePlayer(requireContext(), player!!, url)
     }
 
 

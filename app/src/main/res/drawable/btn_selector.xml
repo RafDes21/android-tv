@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Estado cuando el botón tiene el foco -->
     <item android:state_focused="true">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/test"/> <!-- Color cuando tiene el foco -->
-            <corners android:radius="8dp"/>
+        <shape android:shape="oval">
+            <solid android:color="@color/test"/>
         </shape>
     </item>
 
-    <!-- Estado cuando el botón es presionado -->
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <solid android:color="#FF3700B3"/> <!-- Color cuando está presionado -->
+            <solid android:color="#FF3700B3"/>
             <corners android:radius="8dp"/>
         </shape>
     </item>
 
-    <!-- Estado normal (sin foco) -->
     <item>
-        <shape android:shape="rectangle">
-            <solid android:color="#FFBB86FC"/> <!-- Color cuando no tiene el foco -->
+        <shape android:shape="oval">
+            <solid android:color="#FFBB86FC"/>
             <corners android:radius="8dp"/>
         </shape>
     </item>

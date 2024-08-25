@@ -6,15 +6,16 @@
     android:layout_height="match_parent">
 
     <androidx.media3.ui.PlayerView
-        android:id="@+id/player"
+        android:id="@+id/video_surface"
         android:layout_width="match_parent"
-        app:use_controller="false"
-        android:layout_height="match_parent" />
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_height="match_parent"
+        app:use_controller="false" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/video_fragment"
+    <FrameLayout
+        android:id="@+id/controls_container"
         android:layout_width="match_parent"
-        android:name="com.rafdev.practicestv.ui.fragment.VideoPlayerFragment"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>
