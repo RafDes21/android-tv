@@ -85,6 +85,16 @@
             android:paddingEnd="15dp"
             android:src="@drawable/ic_play" />
 
+        <androidx.media3.ui.DefaultTimeBar
+            android:id="@+id/exo_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:buffered_color="#95989F"
+            app:played_color="@color/test"
+            app:scrubber_color="@color/test"
+            app:unplayed_color="#45424E" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,5 +2,10 @@
 <resources>
     <color name="black">#000</color>
     <color name="test">#CA0A0A</color>
+    <color name="test1">#49B137</color>
+    <color name="test2">#1741AE</color>
+    <color name="test3">#D8C130</color>
+    <color name="test4">#42E4CC</color>
+
 
 </resources>

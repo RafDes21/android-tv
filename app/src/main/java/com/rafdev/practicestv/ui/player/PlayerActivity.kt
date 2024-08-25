@@ -9,21 +9,33 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.media3.common.MediaItem
 import androidx.media3.common.util.Log
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.ui.DefaultTimeBar
 import androidx.media3.ui.PlayerView
 import com.rafdev.practicestv.R
 import dagger.hilt.android.AndroidEntryPoint
 
+@UnstableApi
 @AndroidEntryPoint
 class PlayerActivity : FragmentActivity() {
 
     private lateinit var playPauseButton: ImageView
+    private lateinit var backButton: ImageView
     private lateinit var controlsContainer: FrameLayout
     private lateinit var handler: Handler
     private lateinit var hideControlsRunnable: Runnable
+    private lateinit var timeBar: DefaultTimeBar
+    private val updateProgressRunnable = object : Runnable {
+        override fun run() {
+            updateTimeBar()
+            handler.postDelayed(this, 1000) // Actualiza cada segundo
+        }
+    }
 
     companion object {
         const val TAG = "debugPlayerActivity"
@@ -42,6 +54,14 @@ class PlayerActivity : FragmentActivity() {
         val controlsView =
             layoutInflater.inflate(R.layout.custom_playback_controls, controlsContainer, true)
         playPauseButton = controlsView.findViewById(R.id.play_pause_button)
+
+        backButton = controlsView.findViewById(R.id.ic_back)
+
+        timeBar = controlsView.findViewById(R.id.exo_progress)
+        timeBar.setBufferedColor(ContextCompat.getColor(this, R.color.test))
+        timeBar.setPlayedColor(ContextCompat.getColor(this, R.color.test1))
+        timeBar.setScrubberColor(ContextCompat.getColor(this, R.color.test2))
+        timeBar.setUnplayedColor(ContextCompat.getColor(this, R.color.test3))
 
         // Configurar el reproductor
         player = ExoPlayer.Builder(this).build()
@@ -71,6 +91,7 @@ class PlayerActivity : FragmentActivity() {
         })
         setupButtonListeners()
         setupDirectionalPadListener()
+        handler.post(updateProgressRunnable)
     }
 
     private fun setupButtonListeners() {
@@ -107,7 +128,7 @@ class PlayerActivity : FragmentActivity() {
                 handler.removeCallbacks(hideControlsRunnable)
             }
         }
-        findViewById<View>(R.id.ic_back).setOnFocusChangeListener { _, hasFocus ->
+       backButton.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 handler.postDelayed(hideControlsRunnable, 5000)
             } else {
@@ -133,6 +154,18 @@ class PlayerActivity : FragmentActivity() {
             .alpha(0f)
             .setDuration(300)
             .withEndAction { controlsContainer.visibility = View.GONE }
+    }
+
+    private fun updateTimeBar() {
+        val duration = player.duration
+        val position = player.currentPosition
+        val bufferedPosition = player.bufferedPosition
+
+        if (duration > 0) {
+            timeBar.setDuration(duration)
+            timeBar.setPosition(position)
+            timeBar.setBufferedPosition(bufferedPosition)
+        }
     }
 
     override fun onDestroy() {
