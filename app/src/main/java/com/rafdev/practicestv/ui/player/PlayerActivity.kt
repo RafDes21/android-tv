@@ -1,28 +1,46 @@
 package com.rafdev.practicestv.ui.player
 
-import android.os.Bundle
-import android.view.KeyEvent
-import android.view.View
-import android.widget.FrameLayout
 import android.annotation.SuppressLint
+import android.net.Uri
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import android.view.KeyEvent
+import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.media3.common.MediaItem
-import androidx.media3.common.util.Log
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.datasource.DefaultDataSource
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.ima.ImaAdsLoader
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
+import androidx.media3.exoplayer.source.MediaSource
 import androidx.media3.ui.DefaultTimeBar
 import androidx.media3.ui.PlayerView
+import com.bumptech.glide.Glide
+import com.google.ads.interactivemedia.v3.api.AdEvent
 import com.rafdev.practicestv.R
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @UnstableApi
 @AndroidEntryPoint
 class PlayerActivity : FragmentActivity() {
+
+    companion object {
+        const val TAG_ADS = "debugAds"
+        const val TAG = "debugPlayerActivity"
+    }
+
+    private lateinit var adsLoader: ImaAdsLoader
+    private lateinit var player: ExoPlayer
 
     private lateinit var playPauseButton: ImageView
     private lateinit var backButton: ImageView
@@ -37,39 +55,52 @@ class PlayerActivity : FragmentActivity() {
         }
     }
 
-    companion object {
-        const val TAG = "debugPlayerActivity"
-    }
-
-    private lateinit var player: ExoPlayer
     private lateinit var playerView: PlayerView
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
 
+        // Inicializar las vistas
         playerView = findViewById(R.id.video_surface)
         controlsContainer = findViewById(R.id.controls_container)
 
         val controlsView =
             layoutInflater.inflate(R.layout.custom_playback_controls, controlsContainer, true)
         playPauseButton = controlsView.findViewById(R.id.play_pause_button)
-
         backButton = controlsView.findViewById(R.id.ic_back)
-
         timeBar = controlsView.findViewById(R.id.exo_progress)
+
         timeBar.setBufferedColor(ContextCompat.getColor(this, R.color.test))
         timeBar.setPlayedColor(ContextCompat.getColor(this, R.color.test1))
         timeBar.setScrubberColor(ContextCompat.getColor(this, R.color.test2))
         timeBar.setUnplayedColor(ContextCompat.getColor(this, R.color.test3))
 
-        // Configurar el reproductor
-        player = ExoPlayer.Builder(this).build()
-        playerView.player = player
+        // Configurar el AdsLoader
+        adsLoader = ImaAdsLoader.Builder(this).setAdEventListener(buildAdEventListener()).build()
 
-        // Cargar el video
-        val mediaItem =
-            MediaItem.fromUri("https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8") // Cambia a tu URL de video
+        val dataSourceFactory = DefaultDataSource.Factory(this)
+        val mediaSourceFactory =
+            DefaultMediaSourceFactory(dataSourceFactory).setLocalAdInsertionComponents({adsLoader}, playerView)
+
+        val adAdsUri = Uri.parse(getString(R.string.ad_tag_url))
+        val contentUri = Uri.parse("https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8")
+
+        // Configurar el reproductor con Media3
+        player = ExoPlayer.Builder(this)
+            .setMediaSourceFactory(mediaSourceFactory)
+            .build()
+        playerView.player = player;
+        adsLoader.setPlayer(player);
+
+        // Configurar el contenido del video con anuncios
+        val mediaItem = MediaItem.Builder()
+            .setUri(contentUri)
+            .setAdsConfiguration(MediaItem.AdsConfiguration.Builder(adAdsUri).build())
+            .build()
+
+        // Preparar y reproducir
         player.setMediaItem(mediaItem)
         player.prepare()
         player.playWhenReady = true
@@ -89,18 +120,47 @@ class PlayerActivity : FragmentActivity() {
                 }
             }
         })
+
         setupButtonListeners()
         setupDirectionalPadListener()
         handler.post(updateProgressRunnable)
     }
 
+    private fun buildAdEventListener(): AdEvent.AdEventListener {
+        val imaAdEventListener =
+            AdEvent.AdEventListener { event: AdEvent ->
+
+                Log.i(TAG_ADS, "ads --> $event")
+                val ad = event.ad
+                if (ad != null && !ad.isLinear) {
+                    playerView.overlayFrameLayout?.let { overlayLayout ->
+                        // Puedes agregar vistas personalizadas al overlayLayout para mostrar el anuncio no lineal
+                        // Por ejemplo, podrías mostrar un banner o una imagen
+//                        findViewById<TextView>(R.id.title).text = ad.title
+                        val imageUrl = ad.contentType // Verifica si esta es la URL de la imagen
+
+                        // Mostrar la imagen en el ImageView
+                        val adImageView: ImageView = findViewById(R.id.ad_image_view)
+                        // Usar Picasso para cargar la imagen
+                        Glide.with(this)
+                            .load(imageUrl)
+                            .into(adImageView)
+
+                        Log.i(TAG_ADS, "Anuncio no lineal detectado: ${ad.title}")
+                    }
+                }
+            }
+
+        return imaAdEventListener
+    }
+
     private fun setupButtonListeners() {
         playPauseButton.setOnClickListener {
             playPauseButton.isPressed = true
-            if (player.isPlaying){
+            if (player.isPlaying) {
                 player.pause()
                 playPauseButton.setImageResource(R.drawable.ic_play)
-            }else{
+            } else {
                 player.play()
                 playPauseButton.setImageResource(R.drawable.ic_pause)
             }
@@ -128,7 +188,7 @@ class PlayerActivity : FragmentActivity() {
                 handler.removeCallbacks(hideControlsRunnable)
             }
         }
-       backButton.setOnFocusChangeListener { _, hasFocus ->
+        backButton.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 handler.postDelayed(hideControlsRunnable, 5000)
             } else {

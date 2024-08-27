@@ -13,6 +13,7 @@ android {
         applicationId = "com.rafdev.practicestv"
         minSdk = 21
         targetSdk = 34
+        multiDexEnabled = true
         versionCode = 1
         versionName = "1.0"
 
@@ -58,6 +59,11 @@ dependencies {
 //    import jp.wasabeef.glide.transformations.BorderTransformation
     kapt(libs.hilt.android.compiler)
     val nav_version = "2.7.7"
+    implementation("androidx.multidex:multidex:2.0.1")
+
+//    implementation 'com.google.android.exoplayer:exoplayer:2.x.x' // Reemplaza 2.x.x por la última versión
+//    implementation 'com.google.android.exoplayer:extension-ima:2.x.x'
+    implementation("androidx.media3:media3-exoplayer-ima:1.1.1")
 
 //    implementation("com.google.android.exoplayer:extension-leanback:2.19.1")
     // Kotlin

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.FragmentActivity
+import androidx.multidex.MultiDex
 import androidx.tvprovider.media.tv.TvContractCompat
 import com.rafdev.practicestv.R
 import com.rafdev.practicestv.channel.ChannelManager
@@ -22,6 +23,7 @@ class MainActivity : FragmentActivity() {
     private val dataItem = ImplementResponse()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MultiDex.install(this);
         setContentView(R.layout.activity_main)
 
 //        contentResolver.delete(TvContractCompat.Channels.CONTENT_URI, null, null)
