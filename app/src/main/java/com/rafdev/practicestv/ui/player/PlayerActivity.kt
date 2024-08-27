@@ -78,7 +78,7 @@ class PlayerActivity : FragmentActivity() {
         timeBar.setUnplayedColor(ContextCompat.getColor(this, R.color.test3))
 
         // Configurar el AdsLoader
-        adsLoader = ImaAdsLoader.Builder(this).setAdEventListener(buildAdEventListener()).build()
+        adsLoader = ImaAdsLoader.Builder(this).build()
 
         val dataSourceFactory = DefaultDataSource.Factory(this)
         val mediaSourceFactory =
@@ -126,33 +126,33 @@ class PlayerActivity : FragmentActivity() {
         handler.post(updateProgressRunnable)
     }
 
-    private fun buildAdEventListener(): AdEvent.AdEventListener {
-        val imaAdEventListener =
-            AdEvent.AdEventListener { event: AdEvent ->
-
-                Log.i(TAG_ADS, "ads --> $event")
-                val ad = event.ad
-                if (ad != null && !ad.isLinear) {
-                    playerView.overlayFrameLayout?.let { overlayLayout ->
-                        // Puedes agregar vistas personalizadas al overlayLayout para mostrar el anuncio no lineal
-                        // Por ejemplo, podrías mostrar un banner o una imagen
-//                        findViewById<TextView>(R.id.title).text = ad.title
-                        val imageUrl = ad.contentType // Verifica si esta es la URL de la imagen
-
-                        // Mostrar la imagen en el ImageView
-                        val adImageView: ImageView = findViewById(R.id.ad_image_view)
-                        // Usar Picasso para cargar la imagen
-                        Glide.with(this)
-                            .load(imageUrl)
-                            .into(adImageView)
-
-                        Log.i(TAG_ADS, "Anuncio no lineal detectado: ${ad.title}")
-                    }
-                }
-            }
-
-        return imaAdEventListener
-    }
+//    private fun buildAdEventListener(): AdEvent.AdEventListener {
+//        val imaAdEventListener =
+//            AdEvent.AdEventListener { event: AdEvent ->
+//
+//                Log.i(TAG_ADS, "ads --> $event")
+//                val ad = event.ad
+////                if (ad != null && !ad.isLinear) {
+////                    playerView.overlayFrameLayout?.let { overlayLayout ->
+////                        // Puedes agregar vistas personalizadas al overlayLayout para mostrar el anuncio no lineal
+////                        // Por ejemplo, podrías mostrar un banner o una imagen
+//////                        findViewById<TextView>(R.id.title).text = ad.title
+////                        val imageUrl = ad.contentType // Verifica si esta es la URL de la imagen
+////
+////                        // Mostrar la imagen en el ImageView
+////                        val adImageView: ImageView = findViewById(R.id.ad_image_view)
+////                        // Usar Picasso para cargar la imagen
+////                        Glide.with(this)
+////                            .load(imageUrl)
+////                            .into(adImageView)
+////
+////                        Log.i(TAG_ADS, "Anuncio no lineal detectado: ${ad.title}")
+////                    }
+////                }
+//            }
+//
+//        return imaAdEventListener
+//    }
 
     private fun setupButtonListeners() {
         playPauseButton.setOnClickListener {

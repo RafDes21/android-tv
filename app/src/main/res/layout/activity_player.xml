@@ -14,21 +14,6 @@
         app:controller_layout_id="@layout/custom_playback_controls"
         app:use_controller="false" />
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/title"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:textSize="35sp"-->
-    <!--        tools:text="@string/app_name"-->
-    <!--        android:background="@color/test1"-->
-    <!--        android:textColor="@color/test"/>-->
-    <ImageView
-        android:id="@+id/ad_image_view"
-        android:layout_width="480dp"
-        android:background="@color/test1"
-        android:layout_height="70dp"/>
-
-
     <FrameLayout
         android:id="@+id/controls_container"
         android:layout_width="match_parent"
